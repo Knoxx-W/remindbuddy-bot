@@ -234,4 +234,11 @@ bot.on('message', (msg) => {
     }
 });
 
-console.log('✅ Bot is ready!');
+// Simple port binding for Render
+const port = process.env.PORT || 3000;
+require('http').createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('🤖 RemindBuddy Bot is Alive!\n');
+}).listen(port, '0.0.0.0');
+
+console.log(`✅ Bot is running on port ${port}`);
